@@ -1,14 +1,16 @@
 # AGENTS
 
 ## Context
-- **Name**: Date-Time Service – Spring Boot API returning ISO timestamps for four cities.
+- **Name**: Date-Time Service – Spring Boot API returning ISO timestamps for four cities plus a bundled currency conversion API.
 - **Entry point**: `src/main/java/com/example/datetimeservice/DatetimeServiceApplication.java`.
 - **Primary controller**: `WorldTimeController` exposes `GET /api/time`, builds a list of `CountryTimeResponse` records, and formats timestamps with `DateTimeFormatter.ISO_OFFSET_DATE_TIME`.
+- **Currency controller**: `CurrencyConversionController` exposes `POST /api/currency/convert`, normalizes request payloads, and maps service results into DTOs.
 - **DTOs**: immutable via Lombok (`@Value`, `@Builder`, `@Jacksonized`).
 
 ## Expected Behaviors
 - `GET /api/time` must always return four elements (United States/New York, United Kingdom/London, Japan/Tokyo, Australia/Sydney). Each payload entry must include `country`, `city`, `timeZone`, and `isoDateTime` containing a valid ISO-8601 string.
-- Avoid hard-coding anything outside the controller's `LOCATIONS` list; new logic should derive from that source.
+- `POST /api/currency/convert` accepts `fromCurrency`, `toCurrency`, and a positive `amount`, returning normalized currency codes, the conversion rate applied, and the converted amount rounded to four decimals.
+- Avoid hard-coding anything outside the controller's `LOCATIONS` list for world time; new logic should derive from that source. Currency conversions should continue to run through `CurrencyConversionService` so the rate map remains centralized.
 
 ## Tooling & Commands
 - Build & run locally: `./mvnw spring-boot:run` (port 8080).
