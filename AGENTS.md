@@ -5,6 +5,7 @@
 - **Entry point**: `src/main/java/com/example/datetimeservice/DatetimeServiceApplication.java`.
 - **Primary controller**: `WorldTimeController` exposes `GET /api/time`, builds a list of `CountryTimeResponse` records, and formats timestamps with `DateTimeFormatter.ISO_OFFSET_DATE_TIME`.
 - **Currency controller**: `CurrencyConversionController` exposes `POST /api/currency/convert`, normalizes request payloads, and maps service results into DTOs.
+- **Recipe controller**: `EggRecipeController` exposes `GET /api/eggs/recipe`, intentionally demonstrates bad practices, and returns a random egg recipe map.
 - **DTOs**: immutable via Lombok (`@Value`, `@Builder`, `@Jacksonized`).
 
 ## Expected Behaviors

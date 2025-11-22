@@ -4,6 +4,7 @@ This Spring Boot application exposes:
 
 - `GET /api/time` – returns the current date and time for four major cities (New York, London, Tokyo, Sydney). Each response entry includes the country, city, IANA time zone, and an ISO-8601 timestamp.
 - `POST /api/currency/convert` – converts an amount from one supported currency into another using bundled USD-relative rates and returns the converted amount plus the rate that was applied.
+- `GET /api/eggs/recipe` – intentionally bad-practice endpoint that returns a randomly chosen egg recipe payload for demonstration purposes.
 
 ## Running Locally
 
